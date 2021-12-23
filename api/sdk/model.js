@@ -1,15 +1,15 @@
 const tf = require('@tensorflow/tfjs-node');
 
 function normalized(data){ // suhu dan kelembaban
-    S = (data[0] - 29.5) / 4.611213458  //29.5= avg    4.611213458 = stdev
-    K = (data[1] - 50.5) / 28.87509493 
-    return [S, K]
+    N = (data[0] - 29.5) / 4.617796207  //29.5= avg    4.611213458 = stdev
+    B = (data[1] - 9.5) / 5.197158162
+    return [N, B]
 }
 
 function denormalized(data){
-    O = (data[0] * 0.4) + 0.490051113 // 0.497649258 = stdev  0.45 = avg
-    L = (data[1] * 0.496233468) + 0.5625
-    return [O, L]
+    M = (data[0] * 0.5625) + 0.496941867336809 
+    A = (data[1] * 0.722222222222222) + 0.448682848877996
+    return [M, A]
 }
 
 

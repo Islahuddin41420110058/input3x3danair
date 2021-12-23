@@ -1,22 +1,20 @@
 const tf = require('@tensorflow/tfjs-node');
 
 function normalized(data){ // suhu dan kelembaban
-    S = (data[0] - 29.5) / 4.617796207  //29.5= avg    4.611213458 = stdev
-    K = (data[1] - 10.5) / 5.77531228375762 
-    A = (data[2] - 8.5) / 4.61699192332656
-    return [S, K, A]
+    N = (data[0] - 29.5) / 4.617796207  //29.5= avg    4.611213458 = stdev
+    B = (data[1] - 9.5) / 5.197158162
+    return [N, B]
 }
 
 function denormalized(data){
-    M = (data[0] * 0.5625) + 0.496855314716221 // 0.497649258 = stdev  0.45 = avg
-    N = (data[1] * 0.4) + 0.490665212845968
-    O = (data[2] * 0.6875) + 0.46423834544263
-    return [M, N, O]
+    M = (data[0] * 0.5625) + 0.496941867336809 
+    A = (data[1] * 0.722222222222222) + 0.448682848877996
+    return [M, A]
 }
 
 
 async function predict(data){
-    let in_dim = 3;
+    let in_dim = 2;
     
     data = normalized(data);
     shape = [1, in_dim];

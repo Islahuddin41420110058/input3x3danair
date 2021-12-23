@@ -26,7 +26,7 @@ bot.onText(/\/start/, (msg) => {
 bot.onText(/\/predict/, (msg) => { 
     bot.sendMessage(
         msg.chat.id,
-        `input nilai S|K|A contohnya 30|10|5`
+        `input nilai suhu|ketinggianair contohnya 30|10`
     );   
     state = 1;
 });
@@ -37,25 +37,22 @@ bot.on('message', (msg) => {
         model.predict(
             [
                 parseFloat(s[0]), // string to float
-                parseFloat(s[1]),
-                parseFloat(s[2])
+                parseFloat(s[1])
+               
                 
             ]
         ).then((jres1)=>{
             console.log(jres1);
             
-            cls_model.classify([parseFloat(s[0]), parseFloat(s[1]), parseFloat(s[2]), parseFloat(jres1[0]), parseFloat(jres1[1]), parseFloat(jres1[2]) ]).then((jres2)=>{
+            cls_model.classify([parseFloat(s[0]), parseFloat(s[1]), parseFloat(jres1[0]), parseFloat(jres1[1])]).then((jres2)=>{
                 bot.sendMessage(
                         msg.chat.id,
-                        `nilai kipas yang diprediksi adalah ${jres1[0]}`
+                        `nilai mistmaker yang diprediksi adalah ${jres1[0]}`
                 );
                 bot.sendMessage(
                         msg.chat.id,
-                        `nilai pompa yang diprediksi adalah ${jres1[1]}`
-                ); 
-                bot.sendMessage(
-                        msg.chat.id,
-                        `nilai air yang diprediksi adalah ${jres1[2]}`
+                        `nilai ketinggianair yang diprediksi adalah ${jres1[1]}`
+               
                 ); 
                 bot.sendMessage(
                         msg.chat.id,
@@ -73,12 +70,11 @@ bot.on('message', (msg) => {
     }
 })
 // routers
-r.get('/predict/:S/:K/:A', function(req, res, next) {    
+r.get('/predict/:N/:B', function(req, res, next) {    
     model.predict(
         [
-            parseFloat(req.params.S), // string to float
-            parseFloat(req.params.K),
-            parseFloat(req.params.A)
+            parseFloat(req.params.N), // string to float
+            parseFloat(req.params.B)
         ]
     ).then((jres)=>{
         res.json(jres);
@@ -86,46 +82,38 @@ r.get('/predict/:S/:K/:A', function(req, res, next) {
 });
 
 //routers
-r.get('/classify/:S/:K/:A', function(req, res, next) {    
+r.get('/classify/:N/:B', function(req, res, next) {    
     model.predict(
         [
-            parseFloat(req.params.S), // string to float
-            parseFloat(req.params.K),
-            parseFloat(req.params.A)
+            parseFloat(req.params.N), // string to float
+            parseFloat(req.params.B)
         ]
     ).then((jres)=>{
         cls_model.classify(
             [
-                parseFloat(req.params.S), // string to float
-                parseFloat(req.params.K),
-                parseFloat(req.params.A),
+                parseFloat(req.params.N), // string to float
+                parseFloat(req.params.B),
                 parseFloat(jres[0]),
-                parseFloat(jres[1]),
-                parseFloat(jres[2])
+                parseFloat(jres[1])
             ]
         ).then((jres_)=>{
-            let status = "KIPAS OFF POMPA OFF AIR ON";
+            let status = "MIST MAKER OFF AIR SEDANG DIISI";
             
-            if(jres_ == "1|0|1"){
-                status = "KIPAS OFF POMPA OFF AIR ON"
-            }if(jres_ == "0|0|1"){
-                status = "KIPAS ON POMPA OFF AIR OFF"
-            }if(jres_ == "0|1|1"){
-                status = "KIPAS OFF POMPA ON AIR ON"
-            }if(jres_ == "1|1|1"){
-                status = "KIPAS ON POMPA ON AIR ON"
-            }if(jres_ == "1|1|0"){
-                status = "KIPAS ON POMPA ON AIR OFF"
+            if(dres_ == "1|1"){
+                status = "MIST MAKER ON AIR SEDANG DIISI"
+            }if(dres_ == "0|0"){
+                status = "MIST MAKER OFF AIR OFF"
+            }if(dres_ == "1|0"){
+                status = "MIST MAKER ON AIR OFF"
             }
             
 //             jres_.split("|");
-            const suhu = parseFloat(req.params.S);
-            const kelembaban = parseFloat(req.params.K)
-            const air = parseFloat(req.params.A)
+            const suhu = parseFloat(req.params.N);
+            const ketinggianair = parseFloat(req.params.B)
            
             bot.sendMessage(
                     2128268907, //msg.id
-                    `SUHU:: ${suhu} KELEMBABAN:: ${kelembaban} AIR:: ${air} KONDISI:: ${status}`
+                    `SUHU:: ${suhu} KETINGGIAN AIR:: ${ketinggianair} KONDISI:: ${status}`
                      
                      
             ); // to telegram

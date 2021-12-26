@@ -111,21 +111,21 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
             const [pompa, kipas, kran] = jres_.split("|")
             
             if (pompa === "1") {
-                status += "POMPA ON";
+                status += " POMPA ON";
             } else {
-                status += "POMPA OFF";
+                status += " POMPA OFF";
             }
             
             if (kipas === "1") {
-                status += "KIPAS ON";
+                status += " KIPAS ON";
             } else {
-                status += "KIPAS OFF";
+                status += " KIPAS OFF";
             }
             
              if (kran === "1") {
-                status += "KRAN ON";
+                status += " KRAN ON";
             } else {
-                status += "KRAN OFF";
+                status += " KRAN OFF";
             }
             
             

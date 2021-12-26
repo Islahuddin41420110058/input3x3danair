@@ -100,7 +100,7 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
             [
                 parseFloat(req.params.S), // string to float
                 parseFloat(req.params.K),
-                parseFloat(req.params.A)
+                parseFloat(req.params.A),
                 parseFloat(jres[0]),
                 parseFloat(jres[1]),
                 parseFloat(jres[2])

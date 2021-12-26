@@ -16,7 +16,7 @@ function denormalized(data){
 
 
 async function predict(data){
-    let in_dim = 2;
+    let in_dim = 3;
     
     data = normalized(data);
     shape = [1, in_dim];

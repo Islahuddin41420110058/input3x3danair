@@ -108,7 +108,7 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
         ).then((jres_)=>{
             let status = "";
             
-            const [pompa, kipas, kran] = jres.split("|")
+            const [pompa, kipas, kran] = jres_.split("|")
             
             if (pompa === "1") {
                 status += "POMPA ON";

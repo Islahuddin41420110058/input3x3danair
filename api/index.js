@@ -26,7 +26,7 @@ bot.onText(/\/start/, (msg) => {
 bot.onText(/\/predict/, (msg) => { 
     bot.sendMessage(
         msg.chat.id,
-        `input nilai suhu|kelembaban|ketinggianair contohnya 30|60|10`
+        `input nilai suhu|kelembaban|ketinggianair contohnya 30|6|10`
     );   
     state = 1;
 });

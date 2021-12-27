@@ -9,9 +9,10 @@ function normalized(data){ // suhu dan kelembaban
 
 function denormalized(data){
     O = (data[0] * 0.5) + 0.500086828
-    L = (data[1] * 0.5625) + 0.496164518
-    J = (data[2] * 0.777777778) + 0.415811905
-    return [O, L, J]
+    J = (data[1] * 0.777777778) + 0.415811905
+    L = (data[2] * 0.5625) + 0.496164518
+    
+    return [O, J, L]
 }
 
 

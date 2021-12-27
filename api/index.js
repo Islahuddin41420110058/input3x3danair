@@ -52,11 +52,11 @@ bot.on('message', (msg) => {
                 );
                 bot.sendMessage(
                         msg.chat.id,
-                        `nilai kipas yang diprediksi adalah ${jres1[1]}`
+                        `nilai ketinggianair yang diprediksi adalah ${jres1[1]}`
                 );
                 bot.sendMessage(
                         msg.chat.id,
-                        `nilai ketinggianair yang diprediksi adalah ${jres1[2]}`
+                        `nilai kipas yang diprediksi adalah ${jres1[2]}`
                
                 ); 
                 bot.sendMessage(
@@ -106,22 +106,22 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
                 parseFloat(jres[2])
             ]
         ).then((jres_)=>{
-            let status = "POMPA OFF KIPAS OFF KRAN ON";
+            let status = "POMPA OFF KRAN ON KIPAS OFF";
 
             if(jres_ == "0|1|1"){
-               status = "POMPA OFF KIPAS ON KRAN ON"
-            }if(jres_ == "1|0|1"){
-                status = "POMPA ON KIPAS OFF KRAN ON"
-            }if(jres_ == "1|1|1"){
-                 status = "POMPA ON KIPAS ON KRAN ON"
-            }if(jres_ == "1|0|0"){
-                status = "POMPA ON KIPAS OFF KRAN OFF"
+               status = "POMPA OFF KRAN ON KIPAS ON"
             }if(jres_ == "1|1|0"){
-                 status = "POMPA ON KIPAS ON KRAN OFF"
+               status = "POMPA ON KRAN ON KIPAS OFF"
+            }if(jres_ == "1|1|1"){
+                 status = "POMPA ON KRAN ON KIPAS ON"
             }if(jres_ == "0|0|0"){
-                status = "POMPA OFF KIPAS OFF KRAN OFF"
-            }if(jres_ == "0|1|0"){
-                 status = "POMPA OFF KIPAS ON KRAN OFF"
+                status = "POMPA OFF KRAN OFF KIPAS OFF"
+            }if(jres_ == "0|0|1"){
+                 status = "POMPA OFF KRAN OFF KIPAS ON"
+            }if(jres_ == "1|0|0"){
+                status = "POMPA ON KRAN OFF KIPAS OFF"
+            }if(jres_ == "1|0|1"){
+                status = "POMPA ON KRAN OFF KIPAS ON"
              }
             
 //             jres_.split("|");

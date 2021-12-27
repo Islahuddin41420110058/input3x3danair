@@ -106,40 +106,23 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
                 parseFloat(jres[2])
             ]
         ).then((jres_)=>{
-            let status = "";
-            
-            const [pompa, kipas, kran] = jres_.split("|")
-            
-            if (pompa === "1") {
-                status += " POMPA ON";
-            } else {
-                status += " POMPA OFF";
-            }
-            
-            if (kipas === "1") {
-                status += " KIPAS ON";
-            } else {
-                status += " KIPAS OFF";
-            }
-            
-             if (kran === "1") {
-                status += " KRAN ON";
-            } else {
-                status += " KRAN OFF";
-            }
-            
-            
-//             if(jres_ == "0|1|1"){
-//                 status = "POMPA OFF KIPAS OFF KRAN ON"
-//             }if(jres_ == "0|0|0"){
-//                 status = "POMPA OFF KIPAS OFF KRAN OFF"
-//             }if(jres_ == "0|1|0"){
-//                 status = "POMPA OFF KIPAS ON KRAN OFF"
-//             }if(jres_ == "1|0|0"){
-//                 status = "POMPA OFF KIPAS OFF KRAN ON"
-//             }if(jres_ == "1|1|0"){
-//                 status = "POMPA ON KIPAS ON KRAN OFF"
-//             }
+            let status = "POMPA OFF KIPAS OFF KRAN ON";
+
+            if(jres_ == "0|1|1"){
+               status = "POMPA OFF KIPAS ON KRAN ON"
+            }if(jres_ == "1|0|1"){
+                status = "POMPA ON KIPAS OFF KRAN ON"
+            }if(jres_ == "1|1|1"){
+                 status = "POMPA ON KIPAS ON KRAN ON"
+            }if(jres_ == "1|0|0"){
+                status = "POMPA ON KIPAS OFF KRAN OFF"
+            }if(jres_ == "1|1|0"){
+                 status = "POMPA ON KIPAS ON KRAN OFF"
+            }if(jres_ == "0|0|0"){
+                status = "POMPA OFF KIPAS OFF KRAN OFF"
+            }if(jres_ == "0|1|0"){
+                 status = "POMPA OFF KIPAS ON KRAN OFF"
+             }
             
 //             jres_.split("|");
             const suhu = parseFloat(req.params.S);

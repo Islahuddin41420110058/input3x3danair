@@ -1,18 +1,20 @@
 const tf = require('@tensorflow/tfjs-node');
 
 function normalized(data){ // i & r
-    N = (data[0] - 29.5) / 4.617796207
-    B = (data[1] - 9.5) / 5.197158162
-    M = (data[2] - 0.5625) / 0.496941867336809
-    A = (data[3] - 0.722222222222222) / 0.448682848877996
-    return [N, B, M, A]
+    S = (data[0] - 29.5) / 4.611213458
+    K = (data[1] - 50.5) / 28.87509493
+    A = (data[2] - 49.5) / 28.87509493
+    O = (data[3] - 0.4) / 0.490051113
+    L = (data[4] - 0.5625) / 0.496233468
+    J = (data[5] - 0.14) / 0.347095516
+    return [S, K, A, O, L, J]
 }
 
 const argFact = (compareFn) => (array) => array.map((el, idx) => [el, idx]). reduce(compareFn)[1]
 const argMax = argFact((min, el) => (el[0] > min[0] ? el : min ))
 
 function ArgMax(res){
-    label = "0|1" //MIST MAKER OFF AIR SEDANG DIISI
+    label = "0|0|1" //POMPA OFF KIPAS OFF KRAN ON
     cls_data = []
     for(i=0; i<res.length; i++){
         cls_data[i] = res[i]
@@ -20,16 +22,20 @@ function ArgMax(res){
     console.log(cls_data, argMax(cls_data));
     
     if(argMax(cls_data) == 1){
-        label = "1|1" //MIST MAKER ON AIR SEDANG DIISI
+        label = "0|1|1" //POMPA OFF KIPAS OFF KRAN ON
     }if(argMax(cls_data) == 2){
-        label = "0|0" //MIST MAKER OFF AIR OFF
+        label = "0|0|0" //POMPA OFF KIPAS OFF KRAN OFF
     }if(argMax(cls_data) == 3){
-        label = "1|0" //MIST MAKER ON AIR OFF
+        label = "0|1|0" //POMPA OFF KIPAS ON KRAN OFF
+    }if(argMax(cls_data) == 4){
+        label = "1|0|0" //POMPA OFF KIPAS OFF KRAN ON
+    }if(argMax(cls_data) == 5){
+        label = "1|1|0" //POMPA ON KIPAS ON KRAN OFF
     }
     return label
 }
 async function classify(data){
-    let in_dim = 4;
+    let in_dim = 6;
     
     data = normalized(data);
     shape = [1, in_dim];

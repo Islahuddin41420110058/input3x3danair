@@ -7,7 +7,7 @@ const cls_model = require('./sdk/cls_model.js');
 
 // Bot Setting
 const TelegramBot = require('node-telegram-bot-api');
-const token = '5057431556:AAGnOFgp9MlogJhT3sjbMafwdIAdpPX2L8M'
+const token = '5056542354:AAEbTD6oz_OJnifzayQFMgyuJ7EF6qVrzUs' 
 const bot = new TelegramBot(token, {polling: true});
 
 state = 0;
@@ -100,25 +100,46 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
             [
                 parseFloat(req.params.S), // string to float
                 parseFloat(req.params.K),
-                parseFloat(req.params.A)
+                parseFloat(req.params.A),
                 parseFloat(jres[0]),
                 parseFloat(jres[1]),
                 parseFloat(jres[2])
             ]
         ).then((jres_)=>{
-            let status = "POMPA OFF KIPAS OFF KRAN ON";
+            let status = "";
             
-            if(jres_ == "0|1|1"){
-                status = "POMPA OFF KIPAS OFF KRAN ON"
-            }if(jres_ == "0|0|0"){
-                status = "POMPA OFF KIPAS OFF KRAN OFF"
-            }if(jres_ == "0|1|0"){
-                status = "POMPA OFF KIPAS ON KRAN OFF"
-            }if(jres_ == "1|0|0"){
-                status = "POMPA OFF KIPAS OFF KRAN ON"
-            }if(jres_ == "1|1|0"){
-                status = "POMPA ON KIPAS ON KRAN OFF"
+            const [pompa, kipas, kran] = jres_.split("|")
+            
+            if (pompa === "1") {
+                status += " POMPA ON";
+            } else {
+                status += " POMPA OFF";
             }
+            
+            if (kipas === "1") {
+                status += " KIPAS ON";
+            } else {
+                status += " KIPAS OFF";
+            }
+            
+             if (kran === "1") {
+                status += " KRAN ON";
+            } else {
+                status += " KRAN OFF";
+            }
+            
+            
+//             if(jres_ == "0|1|1"){
+//                 status = "POMPA OFF KIPAS OFF KRAN ON"
+//             }if(jres_ == "0|0|0"){
+//                 status = "POMPA OFF KIPAS OFF KRAN OFF"
+//             }if(jres_ == "0|1|0"){
+//                 status = "POMPA OFF KIPAS ON KRAN OFF"
+//             }if(jres_ == "1|0|0"){
+//                 status = "POMPA OFF KIPAS OFF KRAN ON"
+//             }if(jres_ == "1|1|0"){
+//                 status = "POMPA ON KIPAS ON KRAN OFF"
+//             }
             
 //             jres_.split("|");
             const suhu = parseFloat(req.params.S);

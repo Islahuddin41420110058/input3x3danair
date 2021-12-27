@@ -29,7 +29,7 @@ function ArgMax(res){
     }if(argMax(cls_data) == 3){
         label = "1|1|1" //POMPA ON KIPAS ON KRAN ON
     }if(argMax(cls_data) == 4){
-        label = 0|0|0" //POMPA OFF KIPAS OFF KRAN ON
+        label = "0|0|0" //POMPA OFF KIPAS OFF KRAN ON
     }if(argMax(cls_data) == 5){
         label = "0|0|1" //POMPA ON KIPAS ON KRAN OFF
     }if(argMax(cls_data) == 6){

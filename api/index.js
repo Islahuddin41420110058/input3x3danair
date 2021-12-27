@@ -52,11 +52,11 @@ bot.on('message', (msg) => {
                 );
                 bot.sendMessage(
                         msg.chat.id,
-                        `nilai kipas yang diprediksi adalah ${jres1[1]}`
+                        `nilai ketinggianair yang diprediksi adalah ${jres1[1]}`
                 );
                 bot.sendMessage(
                         msg.chat.id,
-                        `nilai ketinggianair yang diprediksi adalah ${jres1[2]}`
+                        `nilai kipas yang diprediksi adalah ${jres1[2]}`
                
                 ); 
                 bot.sendMessage(

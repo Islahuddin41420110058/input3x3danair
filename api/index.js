@@ -48,15 +48,15 @@ bot.on('message', (msg) => {
             cls_model.classify([parseFloat(s[0]), parseFloat(s[1]), parseFloat(s[2]), parseFloat(jres1[0]), parseFloat(jres1[1]), parseFloat(jres1[2])]).then((jres2)=>{
                 bot.sendMessage(
                         msg.chat.id,
-                        `nilai pompa yang diprediksi adalah ${jres1[0]}`
+                        `nilai kipas yang diprediksi adalah ${jres1[0]}`
                 );
                 bot.sendMessage(
                         msg.chat.id,
-                        `nilai ketinggianair yang diprediksi adalah ${jres1[1]}`
+                        `nilai pompa yang diprediksi adalah ${jres1[1]}`
                 );
                 bot.sendMessage(
                         msg.chat.id,
-                        `nilai kipas yang diprediksi adalah ${jres1[2]}`
+                        `nilai ketinggian air yang diprediksi adalah ${jres1[2]}`
                
                 ); 
                 bot.sendMessage(

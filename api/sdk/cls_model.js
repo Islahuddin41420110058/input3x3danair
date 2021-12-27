@@ -1,12 +1,12 @@
 const tf = require('@tensorflow/tfjs-node');
 
 function normalized(data){ // i & r
-    S = (data[0] - 29.5) / 4.611213458
-    K = (data[1] - 50.5) / 28.87509493
-    A = (data[2] - 49.5) / 28.87509493
-    O = (data[3] - 0.4) / 0.490051113
-    L = (data[4] - 0.5625) / 0.496233468
-    J = (data[5] - 0.14) / 0.347095516
+    S = (data[0] - 29.5) / 4.610572745  //29.5= avg    4.611213458 = stdev 
+    K = (data[1] - 5.5) / 2.872780113
+    A = (data[2] - 9.5) / 5.189028423
+    O = (data[3] - 0.5) / 0.500086828
+    L = (data[4] - 0.5625) / 0.496164518
+    J = (data[5] - 0.783333333) / 0.412045112 
     return [S, K, A, O, L, J]
 }
 
@@ -24,13 +24,17 @@ function ArgMax(res){
     if(argMax(cls_data) == 1){
         label = "0|1|1" //POMPA OFF KIPAS OFF KRAN ON
     }if(argMax(cls_data) == 2){
-        label = "0|0|0" //POMPA OFF KIPAS OFF KRAN OFF
+        label = "1|0|1" //POMPA ON KIPAS OFF KRAN ON
     }if(argMax(cls_data) == 3){
-        label = "0|1|0" //POMPA OFF KIPAS ON KRAN OFF
+        label = "1|1|1" //POMPA ON KIPAS ON KRAN ON
     }if(argMax(cls_data) == 4){
         label = "1|0|0" //POMPA OFF KIPAS OFF KRAN ON
     }if(argMax(cls_data) == 5){
         label = "1|1|0" //POMPA ON KIPAS ON KRAN OFF
+    }if(argMax(cls_data) == 6){
+        label = "0|0|0" //POMPA OFF KIPAS OFF KRAN OFF
+    }if(argMax(cls_data) == 7){
+        label = "0|1|0" //POMPA OFF KIPAS ON KRAN OFF
     }
     return label
 }

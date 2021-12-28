@@ -16,7 +16,7 @@ const argFact = (compareFn) => (array) => array.map((el, idx) => [el, idx]). red
 const argMax = argFact((min, el) => (el[0] > min[0] ? el : min ))
 
 function ArgMax(res){
-    label = "1|0|0" //POMPA OFF KIPAS OFF KRAN ON
+    label = "0|0|1"  //POMPA OFF KIPAS OFF KRAN ON
     cls_data = []
     for(i=0; i<res.length; i++){
         cls_data[i] = res[i]
@@ -31,8 +31,8 @@ function ArgMax(res){
         label = "1|1|1" //POMPA ON KIPAS ON KRAN ON
     }if(argMax(cls_data) == 4){
         label = "0|0|0" //POMPA OFF KIPAS OFF KRAN ON
-    }if(argMax(cls_data) == 0){
-        label = "0|0|1" //POMPA ON KIPAS ON KRAN OFF
+    }if(argMax(cls_data) == 5){
+        label = "1|0|0" //POMPA ON KIPAS ON KRAN OFF
     }if(argMax(cls_data) == 6){
         label = "0|1|0" //POMPA OFF KIPAS OFF KRAN OFF
     }if(argMax(cls_data) == 7){

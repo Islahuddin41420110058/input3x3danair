@@ -106,9 +106,9 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
                 parseFloat(jres[2])
             ]
         ).then((jres_)=>{
-            
-            if(jres_ == "0|0|1"){
-               status = "KIPAS OFF POMPA OFF KRAN ON"
+            let status = "KIPAS OFF POMPA OFF KRAN ON";
+           
+             
             }if(jres_ == "1|0|1"){
                status = "KIPAS OFF POMPA OFF KRAN ON"
             }if(jres_ == "0|1|1"){

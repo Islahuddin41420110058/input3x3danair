@@ -9,7 +9,7 @@ function normalized(data){ // i & r
    // J = (data[5] - 0.720670391) / 0.448748138
     
     
-    return [S, K, A, L, O, J]
+    return [S, K, A]
 }
 
 const argFact = (compareFn) => (array) => array.map((el, idx) => [el, idx]). reduce(compareFn)[1]

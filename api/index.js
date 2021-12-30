@@ -33,43 +33,22 @@ bot.onText(/\/predict/, (msg) => {
 
 bot.on('message', (msg) => {
     if(state == 1){
-        s = msg.text.split("|");
-        model.predict(
-            [
-                parseFloat(s[0]), // string to float
-                parseFloat(s[1]),
+        s = msg.text.split("|");            
+        cls_model.classify([
+                parseFloat(s[0]), 
+                parseFloat(s[1]), 
                 parseFloat(s[2])
-               
-                
-            ]
-        ).then((jres1)=>{
-            console.log(jres1);
-            
-            cls_model.classify([parseFloat(s[0]), parseFloat(s[1]), parseFloat(s[2]), parseFloat(jres1[0]), parseFloat(jres1[1]), parseFloat(jres1[2])]).then((jres2)=>{
-                bot.sendMessage(
-                        msg.chat.id,
-                        `nilai kipas yang diprediksi adalah ${jres1[0]}`
-                );
-                bot.sendMessage(
-                        msg.chat.id,
-                        `nilai pompa yang diprediksi adalah ${jres1[1]}`
-                );
-                bot.sendMessage(
-                        msg.chat.id,
-                        `nilai ketinggian air yang diprediksi adalah ${jres1[2]}`
-               
-                ); 
-                bot.sendMessage(
-                        msg.chat.id,
-                        `Klasifikasi ${jres2}`
-                );
-                state = 0;
-            })
-        })
+        ]).then((jres2)=>{
+            bot.sendMessage(
+                    msg.chat.id,
+                    Klasifikasi ${jres2}
+            );
+            state = 0;
+        }
     }else{
         bot.sendMessage(
         msg.chat.id,
-              `Please Click /start `
+              Please Click /start 
         );
         state = 0
     }
@@ -106,7 +85,7 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
                 parseFloat(jres[2])
             ]
         ).then((jres_)=>{
-            let status = "KIPAS OFF POMPA OFF KRAN ON";
+            let status = "KIPAS OFF POMPA OFF KRAN OFF";
            
              
             if(jres_ == "1|0|1"){
@@ -115,8 +94,8 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
                status = "KIPAS OFF POMPA ON KRAN ON"
             }if(jres_ == "1|1|1"){
                  status = "KIPAS ON POMPA ON KRAN ON"
-            }if(jres_ == "0|0|0"){
-                status = "KIPAS OFF POMPA OFF KRAN OFF"
+            }if(jres_ == "0|0|1"){
+                status = "KIPAS OFF POMPA OFF KRAN ON"
             }if(jres_ == "1|0|0"){
                  status = "KIPAS ON POMPA OFF KRAN OFF" 
             }if(jres_ == "0|1|0"){

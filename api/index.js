@@ -44,7 +44,8 @@ bot.on('message', (msg) => {
                     `Klasifikasi ${jres2}`
             );
             state = 0;
-        }
+        })
+    })
     }else{
         bot.sendMessage(
         msg.chat.id,

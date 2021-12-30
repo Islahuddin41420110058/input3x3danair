@@ -4,9 +4,9 @@ function normalized(data){ // i & r
     S = (data[0] - 29.5) / 4.610577218  //29.5= avg    4.611213458 = stdev 
     K = (data[1] - 5.519553073) / 2.868822923
     A = (data[2] - 9.48603352) / 5.200131697
-    L = (data[3] - 0.5625) / 0.496164999
-    O = (data[4] - 0.497206704) / 0.500079509
-    J = (data[5] - 0.720670391) / 0.448748138
+   // L = (data[3] - 0.5625) / 0.496164999
+   // O = (data[4] - 0.497206704) / 0.500079509
+   // J = (data[5] - 0.720670391) / 0.448748138
     
     
     return [S, K, A, L, O, J]
@@ -41,7 +41,7 @@ function ArgMax(res){
     return label
 }
 async function classify(data){
-    let in_dim = 6;
+    let in_dim = 3;
     
     data = normalized(data);
     shape = [1, in_dim];

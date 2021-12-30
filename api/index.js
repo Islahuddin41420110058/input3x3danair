@@ -86,23 +86,23 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
                 parseFloat(jres[2])
             ]
         ).then((jres_)=>{
-            let status = "KIPAS OFF POMPA OFF KRAN OFF";
+            let status = "KIPAS OFF MISTMAKER OFF POMPA OFF TANGKI AIR OFF";
            
              
             if(jres_ == "1|0|1"){
-               status = "KIPAS OFF POMPA OFF KRAN ON"
+               status = "KIPAS OFF MISTMAKER OFF POMPA OFF TANGKI AIR ON"
             }if(jres_ == "0|1|1"){
-               status = "KIPAS OFF POMPA ON KRAN ON"
+               status = "KIPAS OFF MISTMAKER OFF POMPA ON TANGKI AIR ON"
             }if(jres_ == "1|1|1"){
-                 status = "KIPAS ON POMPA ON KRAN ON"
+                 status = "KIPAS ON MISTMAKER ON POMPA ON TANGKI AIR ON"
             }if(jres_ == "0|0|1"){
-                status = "KIPAS OFF POMPA OFF KRAN ON"
+                status = "KIPAS OFF MISTMAKER OFF POMPA OFF TANGKI AIR ON"
             }if(jres_ == "1|0|0"){
-                 status = "KIPAS ON POMPA OFF KRAN OFF" 
+                 status = "KIPAS ON MISTMAKER ON POMPA OFF TANGKI AIR OFF" 
             }if(jres_ == "0|1|0"){
-                status = "KIPAS OFF POMPA ON KRAN OFF"
+                status = "KIPAS OFF MISTMAKER OFF POMPA ON TANGKI AIR OFF"
             }if(jres_ == "1|1|0"){
-                status = "KIPAS ON POMPA ON KRAN OFF"
+                status = "KIPAS ON MISTMAKER ON POMPA ON TANGKI AIR OFF"
              }
             
 //             jres_.split("|");

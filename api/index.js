@@ -41,7 +41,7 @@ bot.on('message', (msg) => {
         ]).then((jres2)=>{
             bot.sendMessage(
                     msg.chat.id,
-                    Klasifikasi ${jres2}
+                    `Klasifikasi ${jres2}`
             );
             state = 0;
         }

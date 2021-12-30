@@ -41,14 +41,15 @@ bot.on('message', (msg) => {
         ]).then((jres2)=>{
             bot.sendMessage(
                     msg.chat.id,
-                    Klasifikasi ${jres2}
+                    `Klasifikasi ${jres2}`
             );
             state = 0;
-        }
+        })
+   
     }else{
         bot.sendMessage(
         msg.chat.id,
-              Please Click /start 
+              `Please Click /start` 
         );
         state = 0
     }

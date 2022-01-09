@@ -86,23 +86,26 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
                 parseFloat(jres[2])
             ]
         ).then((jres_)=>{
-            let status = "KIPAS OFF MISTMAKER OFF POMPA OFF TANGKI AIR OFF";
+            let status = "KIPAS OFF MISTMAKER OFF POMPA OFF SOLENOID VALVE OFF";
            
              
             if(jres_ == "1|0|1"){
-               status = "KIPAS OFF MISTMAKER OFF POMPA OFF TANGKI AIR ON"
+               status = "KIPAS OFF", 
+                         "MISTMAKER OFF",
+                         "POMPA OFF", 
+                         "SOLENOID VALVE ON"
             }if(jres_ == "0|1|1"){
-               status = "KIPAS OFF MISTMAKER OFF POMPA ON TANGKI AIR ON"
+               status = "KIPAS OFF MISTMAKER OFF POMPA ON SOLENOID VALVE ON"
             }if(jres_ == "1|1|1"){
-                 status = "KIPAS ON MISTMAKER ON POMPA ON TANGKI AIR ON"
+                 status = "KIPAS ON MISTMAKER ON POMPA ON SOLENOID VALVE ON"
             }if(jres_ == "0|0|1"){
-                status = "KIPAS OFF MISTMAKER OFF POMPA OFF TANGKI AIR ON"
+                status = "KIPAS OFF MISTMAKER OFF POMPA OFF SOLENOID VALVE ON"
             }if(jres_ == "1|0|0"){
-                 status = "KIPAS ON MISTMAKER ON POMPA OFF TANGKI AIR OFF" 
+                 status = "KIPAS ON MISTMAKER ON POMPA OFF SOLENOID VALVE OFF" 
             }if(jres_ == "0|1|0"){
-                status = "KIPAS OFF MISTMAKER OFF POMPA ON TANGKI AIR OFF"
+                status = "KIPAS OFF MISTMAKER OFF POMPA ON SOLENOID VALVE OFF"
             }if(jres_ == "1|1|0"){
-                status = "KIPAS ON MISTMAKER ON POMPA ON TANGKI AIR OFF"
+                status = "KIPAS ON MISTMAKER ON POMPA ON SOLENOID VALVE OFF"
              }
             
 //             jres_.split("|");
@@ -114,7 +117,10 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
            
             bot.sendMessage(
                     2128268907, //msg.id
-                    `SUHU:: ${suhu} KELEMBABAN:: ${kelembaban} KETINGGIAN AIR:: ${ketinggianair} KONDISI:: ${status}`
+                    `SUHU:: ${suhu} 
+                     KELEMBABAN:: ${kelembaban} 
+                     KETINGGIAN AIR:: ${ketinggianair} 
+                     KONDISI:: ${status}`
                      
                      
             ); // to telegram

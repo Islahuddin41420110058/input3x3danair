@@ -114,10 +114,10 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
            
             bot.sendMessage(
                     2128268907, //msg.id
-                    `SUHU:: ${suhu}*C`,
-                    `KELEMBABAN TANAH:: ${kelembaban}`,
-                    `KETINGGIAN AIR:: ${ketinggianair} cm`,
-                    `KONDISI:: ${status}`
+                    `SUHU:: ${suhu}*C
+         KELEMBABAN TANAH:: ${kelembaban},
+         KETINGGIAN AIR:: ${ketinggianair} cm,
+         KONDISI:: ${status}`
                      
                      
             ); // to telegram

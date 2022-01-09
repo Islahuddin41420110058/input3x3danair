@@ -90,10 +90,7 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
            
              
             if(jres_ == "1|0|1"){
-               status = "KIPAS OFF", 
-                         "MISTMAKER OFF",
-                         "POMPA OFF", 
-                         "SOLENOID VALVE ON"
+               status = "KIPAS OFF MISTMAKER OFF POMPA OFF SOLENOID VALVE ON"
             }if(jres_ == "0|1|1"){
                status = "KIPAS OFF MISTMAKER OFF POMPA ON SOLENOID VALVE ON"
             }if(jres_ == "1|1|1"){
@@ -117,9 +114,7 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
            
             bot.sendMessage(
                     2128268907, //msg.id
-                    `SUHU:: ${suhu} 
-                     KELEMBABAN:: ${kelembaban} 
-                     KETINGGIAN AIR:: ${ketinggianair} 
+                    `SENSOR:: ${suhu}C ${kelembaban} ${ketinggianair}cm 
                      KONDISI:: ${status}`
                      
                      

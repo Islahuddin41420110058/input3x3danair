@@ -118,9 +118,7 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
             const kelembaban = parseFloat(req.params.K);
             const ketinggianair = parseFloat(req.params.A)
             //
-            const endExecutionTime = new Date();
-            const executionTimeInSeconds = 
-                  (endExecutionTime.getTime() - startExecutionTime.getTime()) * 1000;
+            
            
             bot.sendMessage(
                     2128268907, //msg.id
@@ -139,3 +137,6 @@ KONDISI:: ${status}
 });
 
 module.exports = r;
+const endExecutionTime = new Date();
+const executionTimeInSeconds = 
+                  (endExecutionTime.getTime() - startExecutionTime.getTime()) * 1000;

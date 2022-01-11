@@ -125,7 +125,8 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
 KELEMBABAN TANAH:: ${kelembaban}
 KETINGGIAN AIR:: ${ketinggianair} cm
 KONDISI:: ${status} 
-::${byteTotal} ::${executionTimeInseconds}`
+KECEPATAN::${byteTotal} 
+KEECEPATTT::${executionTimeInseconds}`
                      
                      
             ); // to telegram

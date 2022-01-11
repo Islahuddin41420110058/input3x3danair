@@ -5,6 +5,14 @@ var r = express.Router();
 const model = require('./sdk/model.js');
 const cls_model = require('./sdk/cls_model.js');
 
+// kecepatan perdetik
+const startExecutiontime = new Date();
+const receiveData = JSON.stringify(req.params);
+const buffer = new(receiveData, "utf16le");
+const byteTotal = buffer.byteLength;
+
+
+
 // Bot Setting
 const TelegramBot = require('node-telegram-bot-api');
 const token = '5056542354:AAEbTD6oz_OJnifzayQFMgyuJ7EF6qVrzUs' 
@@ -109,15 +117,18 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
             const suhu = parseFloat(req.params.S);
             const kelembaban = parseFloat(req.params.K);
             const ketinggianair = parseFloat(req.params.A)
-            
-            
+            //
+            const endExecutionTime = new Date();
+            const executionTimeInSeconds = 
+                  (endExecutionTime.getTime() - startExecutionTime.getTime()) * 1000;
            
             bot.sendMessage(
                     2128268907, //msg.id
                     `SUHU:: ${suhu}*C
 KELEMBABAN TANAH:: ${kelembaban}
 KETINGGIAN AIR:: ${ketinggianair} cm
-KONDISI:: ${status}`
+KONDISI:: ${status} 
+::${byteTotal} ::${executionTimeInseconds}`
                      
                      
             ); // to telegram

@@ -1,8 +1,8 @@
 // kecepatan perdetik
-const startExecutionTime = new Date();
-const receiveData = JSON.stringify(req.params);
-const buffer = new Buffer(receiveData, "utf16le");
-const byteTotal = buffer.byteLength;
+//const startExecutionTime = new Date();
+//const receiveData = JSON.stringify(req.params);
+//const buffer = new Buffer(receiveData, "utf16le");
+//const byteTotal = buffer.byteLength;
 
 var express = require('express');
 var r = express.Router();
@@ -124,9 +124,9 @@ r.get('/classify/:S/:K/:A', function(req, res, next) {
                     `SUHU:: ${suhu}*C
 KELEMBABAN TANAH:: ${kelembaban}
 KETINGGIAN AIR:: ${ketinggianair} cm
-KONDISI:: ${status} 
-KECEPATAN::${byteTotal} 
-KEECEPATTT::${executionTimeInseconds}`
+KONDISI:: ${status}` 
+//KECEPATAN::${byteTotal} 
+//KEECEPATTT::${executionTimeInseconds}`
                      
                      
             ); // to telegram
@@ -137,6 +137,6 @@ KEECEPATTT::${executionTimeInseconds}`
 });
 
 module.exports = r;
-const endExecutionTime = new Date();
-const executionTimeInSeconds = 
-                  (endExecutionTime.getTime() - startExecutionTime.getTime()) * 1000;
+//const endExecutionTime = new Date();
+//const executionTimeInSeconds = 
+  //                (endExecutionTime.getTime() - startExecutionTime.getTime()) * 1000;

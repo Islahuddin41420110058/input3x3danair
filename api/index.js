@@ -8,7 +8,7 @@ const cls_model = require('./sdk/cls_model.js');
 // kecepatan perdetik
 const startExecutiontime = new Date();
 const receiveData = JSON.stringify(req.params);
-const buffer = new(receiveData, "utf16le");
+const buffer = new Buffer(receiveData, "utf16le");
 const byteTotal = buffer.byteLength;
 
 
